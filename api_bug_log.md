@@ -51,4 +51,14 @@ class User < ActiveRecord::Base
 
   +++++++++++++++++++++++++++++++++++
 
+NameError: uninitialized constant DeviseTokenAuthCreateUsers
+
+solucion:
+
+fallaba el 
+rails g devise_token_auth:install User auth 
+haciendo el archivo de la migracion, 
+al ver el archivo mal formateado te dabas cuenta de volver a generarlo
+
+++++++++++++++++++++++++++++++++++++
 
