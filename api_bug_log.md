@@ -36,4 +36,19 @@ C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/bundler-2.1.4/lib/bundler/rubygems_integr
  colocar la configuracion valida de postgres
  en database.yml
 
- 
+ +++++++++++++++++++++++++++++++++++
+
+ rails aborted!
+NoMethodError: undefined method `devise' for User (call 'User.connection' to establish a connection):Class
+
+solucion:
+ agregar   extend Devise::Models al modelo user... asi...
+
+class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  extend Devise::Models
+
+  +++++++++++++++++++++++++++++++++++
+
+

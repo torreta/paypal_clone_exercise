@@ -17,3 +17,6 @@ bug1 sqlite3 // 5:37
 instalando postgre gem // 5:38pm
 
 buscando librerias a usar en front // 6:00pm 
+
+--- break 2 // 6:18 (cocinar) // ver git
+
