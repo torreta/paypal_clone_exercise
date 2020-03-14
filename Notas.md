@@ -4,6 +4,7 @@
 rails new paypal-api --api -T --skip-git
 
 # devise token auth (si, a lo terco... knock demasiadas cosas a pedal...)
+https://dev.to/risafj/guide-to-devisetokenauth-simple-authentication-in-rails-api-pfj (guia...)
 https://github.com/lynndylanhurley/devise_token_auth
 rails g devise_token_auth:install User auth
 

@@ -28,3 +28,12 @@ quitar la gema del gemfile (vamos a usar postgres)
 
 ++++++++++++++++++++++++++++++++++++++++++++++++
 
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/bundler-2.1.4/lib/bundler/rubygems_integration.rb:346:in `block (2 levels) in replace_gem': Error loading the 'sqlite3' Active Record adapter. Missing a gem it depends on? sqlite3 is not part of the bundle. Add it to your Gemfile. (LoadError)
+ 
+
+ solucion
+
+ colocar la configuracion valida de postgres
+ en database.yml
+
+ 
