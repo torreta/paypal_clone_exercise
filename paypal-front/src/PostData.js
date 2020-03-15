@@ -1,4 +1,4 @@
-import API from './api';
+// import API from './api';
 
 export default function PostData(type,method,userData) {
     
@@ -19,6 +19,11 @@ export default function PostData(type,method,userData) {
               },
             body: JSON.stringify(userData)
         })
+        .then((response) => {
+            for (var pair of response.headers.entries()) {
+              console.log(pair[0]+ ': '+ pair[1]);
+            }
+          })
         .then((response) => response.json())
         .then((responseJson) => {
             resolve(responseJson);
