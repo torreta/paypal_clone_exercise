@@ -101,7 +101,7 @@ bundle install taking too long
 solucion:
 
  gem install bundler --prerelease
-
+ bundle install --verbose --jobs 8
 
 ++++++++++++++++
 
