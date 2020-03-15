@@ -1,6 +1,9 @@
+import API from './api';
+
 export default function PostData(type,method,userData) {
     
-    let baseUrl = 'http://localhost:3001';
+    //let baseUrl = API.url;
+    let baseUrl = "http://localhost:3001";
 
     console.log(JSON.stringify(userData));
     console.log(method);

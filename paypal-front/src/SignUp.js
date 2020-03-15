@@ -70,14 +70,22 @@ class SignUp extends React.Component {
           password_confirmation: this.state.password_confirmation
         };
     
-        console.log(JSON.stringify(data));
+        // console.log(JSON.stringify(data));
     
         PostData('/auth',"POST", data)
         .then((result) => {
           let responseJSON = result;
-          if (responseJSON.token) {
+          console.log("lo que me llego al registrarme;")
+          console.log(JSON.stringify(responseJSON))
+          
+          if (responseJSON.data) {
             sessionStorage.setItem('userData', JSON.stringify(responseJSON));
             this.setState({redirect: true})
+          }
+          if (responseJSON.errors) {
+            alert(responseJSON.errors.full_messages)
+            // sessionStorage.setItem('userData', JSON.stringify(responseJSON));
+            // this.setState({redirect: true})
           }
         });
     
