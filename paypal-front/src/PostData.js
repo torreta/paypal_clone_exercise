@@ -9,9 +9,9 @@ export default function PostData(type,method,userData) {
         fetch(baseUrl+type,{
             method: method,
             headers: {
+              "Access-Control-Allow-Origin":"*",
               "access-control-allow-headers":
-              "Origin, X-Requested-With, Content-Type, Accept",
-              "access-control-allow-origin": "*",
+              "Origin, X-Requested-With, Content-Type, Accept, Authorization",
               "content-type": "application/json; charset=utf-8"
               },
             body: JSON.stringify(userData)

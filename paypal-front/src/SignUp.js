@@ -44,9 +44,9 @@ class SignUp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          name: '',
           email: '',
           password: '',
+          password_confirmation: '',
           redirect: false
         };
       }
@@ -65,13 +65,12 @@ class SignUp extends React.Component {
         e.preventDefault();
     
         const data = {
-          name: this.state.name,
           email: this.state.email,
-          password: this.state.password
+          password: this.state.password_confirmation,
+          password_confirmation: this.state.password_confirmation
         };
     
         console.log(JSON.stringify(data));
-        console.log(this.state.password);
     
         PostData('/auth',"POST", data)
         .then((result) => {
@@ -102,20 +101,6 @@ class SignUp extends React.Component {
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <TextField
-                    autoComplete="fname"
-                    name="name"
-                    variant="outlined"
-                    required
-                    fullWidth
-                    id="name"
-                    label="Nombre"
-                    onChange={this.handleChange}
-
-                    autoFocus
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
                     variant="outlined"
                     required
                     fullWidth
@@ -138,6 +123,19 @@ class SignUp extends React.Component {
                     id="password"
                     onChange={this.handleChange}
                     autoComplete="current-password"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    name="password_confirmation"
+                    label="Repite Contraseña"
+                    type="password"
+                    id="password_confirmation"
+                    onChange={this.handleChange}
+                    autoComplete="confirmation-password"
                   />
                 </Grid>
               </Grid>
