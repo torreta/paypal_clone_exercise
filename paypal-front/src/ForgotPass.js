@@ -92,7 +92,7 @@ class ForgotPass extends React.Component {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Acceso
+          Recuperar tu contraseña
         </Typography>
         <form className={classes.form} noValidate onSubmit={this.onSubmit}>
           <TextField
@@ -107,18 +107,6 @@ class ForgotPass extends React.Component {
             onChange={this.handleChange}
             autoFocus
           />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="Contraseña"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            onChange={this.handleChange}
-          />
           <Button
             type="submit"
             fullWidth
@@ -126,17 +114,12 @@ class ForgotPass extends React.Component {
             color="primary"
             className={classes.submit}
           >
-            Entrar
+            Enviar Recordatorio
           </Button>
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
-                Olvidaste tu Contraseña?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="/signup" variant="body2">
-                {"No tienes cuenta? Registrate"}
+                Recordaste tu Contraseña?
               </Link>
             </Grid>
           </Grid>
