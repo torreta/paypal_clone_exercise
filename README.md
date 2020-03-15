@@ -25,3 +25,5 @@ buscando librerias a usar en front // 6:00pm
 -- comienzo again domingo 5:40pm 
 
 -- breack 6:40pm
+
+-- break 7:15 // dogo walk and dinner prep
