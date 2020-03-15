@@ -62,3 +62,21 @@ al ver el archivo mal formateado te dabas cuenta de volver a generarlo
 
 ++++++++++++++++++++++++++++++++++++
 
+Rails: Can't verify CSRF token authenticity when making a POST request
+
+solucion
+
+
+
+
++++++++++++++++++++++++++++++++++++++++
+NoMethodError (undefined method `flash=' for #<ActionDispatch::Request:0x0000000008746640>):
+
+solucion
+esa linea>: en config > aplication.rb
+
+
+  class Application < Rails::Application
+    # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults 6.0
+    config.middleware.use ActionDispatch::Flash <---- esta linea
