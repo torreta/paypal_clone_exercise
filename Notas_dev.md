@@ -21,10 +21,3 @@ We suggest that you begin by typing:
   yarn start
 
 Happy hacking!
-
-
-:::::: API
-
-(bug1): 5:05pm  --- 5:32pm
-
- gem install pg

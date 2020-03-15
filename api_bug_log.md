@@ -105,3 +105,10 @@ solucion:
 
 ++++++++++++++++
 
+[WARNING] Could not load generator "generators/knock/install_generator". to define constant InstallGenerator, but didn't.
+
+solucion:
+
+When the following is added to application.rb, the error is no longer output.
+
+config.load_defaults 6.0 and config.autoloader = :classic

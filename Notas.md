@@ -8,6 +8,10 @@ https://dev.to/risafj/guide-to-devisetokenauth-simple-authentication-in-rails-ap
 https://github.com/lynndylanhurley/devise_token_auth
 rails g devise_token_auth:install User auth
 
+# knock-backend (si, problemas de deprecation que hicieron super ladilla todo... y para no perder mas tiempo...)
+https://medium.com/the-boujoukos-bulletin/basic-authentication-with-react-rails-knock-c10ff03e1399
+rails g scaffold User email password_digest
+
 :::::: front
 # la aplicacion react la cree con 
  npx create-react-app paypal-front

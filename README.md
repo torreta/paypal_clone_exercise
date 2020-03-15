@@ -20,3 +20,8 @@ buscando librerias a usar en front // 6:00pm
 
 --- break 2 // 6:18 (cocinar) // ver git
 
+--- break 3 // 10:19 pm (dormir XD)
+
+-- comienzo again domingo 5:40pm 
+
+-- breack 6:40pm
