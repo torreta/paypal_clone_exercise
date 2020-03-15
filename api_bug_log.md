@@ -1,5 +1,5 @@
 
-(bug 1)
++++++++++++++++++++++++++++++++++++++++++++++
 To see why this extension failed to compile, please check the mkmf.log which can
 be found here:
 
@@ -66,8 +66,11 @@ Rails: Can't verify CSRF token authenticity when making a POST request
 
 solucion
 
-
-
+class ApplicationController < ActionController::Base
+        # este cambio solo es valido si todo ltus request son por el apo
+        protect_from_forgery unless: -> { request.format.json? }
+        include DeviseTokenAuth::Concerns::SetUserByToken
+end
 
 +++++++++++++++++++++++++++++++++++++++
 NoMethodError (undefined method `flash=' for #<ActionDispatch::Request:0x0000000008746640>):
@@ -80,3 +83,25 @@ esa linea>: en config > aplication.rb
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
     config.middleware.use ActionDispatch::Flash <---- esta linea
+
+++++++++++++++++++++++++++++++++++++++++++
+
+localhost/:1 Access to fetch at 'http://localhost:3001/auth' from origin 'http://localhost:3000' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+
+solucion:
+
+configuracion de cors en initializers 
+
+**
+
+++++++++++++++++++++++++++++++++
+
+bundle install taking too long
+
+solucion:
+
+ gem install bundler --prerelease
+
+
+++++++++++++++++
+
