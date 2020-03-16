@@ -118,7 +118,7 @@ class ForgotPass extends React.Component {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link href="/signin" variant="body2">
                 Recordaste tu Contraseña?
               </Link>
             </Grid>

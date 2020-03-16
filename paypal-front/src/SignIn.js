@@ -10,6 +10,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import withStyles from "@material-ui/core/styles/withStyles";
+import { Redirect } from "react-router-dom";
 
 import PostData from './PostData';
 
@@ -66,15 +67,23 @@ class SignIn extends React.Component {
       password: this.state.password
     };
 
-    console.log(JSON.stringify(data));
-    console.log(this.state.password);
+    var request = {"auth": {"email": data.email, "password": data.password}}
+    
+    console.log(JSON.stringify(request));
 
-    PostData('/auth/sign_in','POST', data)
+    PostData('/user_token','POST', request)
     .then((result) => {
       let responseJSON = result;
-      if (responseJSON.token) {
-        sessionStorage.setItem('userData', JSON.stringify(responseJSON));
+      console.log("lo que llego del server");
+      console.log(result);
+
+      if (responseJSON.jwt) {
+        localStorage.setItem("jwt", result.jwt);
+        sessionStorage.setItem("jwt", result.jwt);
         this.setState({redirect: true})
+        if (this.state.redirect) {
+          return <Redirect to={"/signup"} />
+        }
       }
     });
 
@@ -130,7 +139,7 @@ class SignIn extends React.Component {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link href="/forgotpass" variant="body2">
                 Olvidaste tu Contraseña?
               </Link>
             </Grid>
