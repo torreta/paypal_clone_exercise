@@ -45,7 +45,7 @@ class SignIn extends React.Component {
     this.state = {
       email: '',
       password: '',
-      redirect: false
+      redirect: null
     };
   }
 
@@ -80,10 +80,7 @@ class SignIn extends React.Component {
       if (responseJSON.jwt) {
         localStorage.setItem("jwt", result.jwt);
         sessionStorage.setItem("jwt", result.jwt);
-        this.setState({redirect: true})
-        if (this.state.redirect) {
-          return <Redirect to={"/signup"} />
-        }
+        this.setState({redirect: "/signup"})
       }
     });
 
@@ -92,7 +89,10 @@ class SignIn extends React.Component {
 
   render() {
     const { classes } = this.props;
-
+    if (this.state.redirect) {
+      //redirecciona si te logueas
+      return <Redirect to={this.state.redirect} />
+    }
     return (
       <Container component="main" maxWidth="xs">
       <CssBaseline />
