@@ -10,6 +10,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import withStyles from "@material-ui/core/styles/withStyles";
+import { Redirect } from "react-router-dom";
 
 import PostData from './PostData';
 
@@ -47,7 +48,7 @@ class SignUp extends React.Component {
           email: '',
           password: '',
           password_confirmation: '',
-          redirect: false
+          redirect: null
         };
       }
 
@@ -58,7 +59,7 @@ class SignUp extends React.Component {
     };
 
     validateForm() {
-        return this.state.email.length > 0 && this.state.password.length > 0 && this.state.name.length > 0;
+        return this.state.email.length > 0 && this.state.password.length > 0;
     }
 
     onSubmit = e => {
@@ -69,24 +70,24 @@ class SignUp extends React.Component {
           password: this.state.password_confirmation,
           password_confirmation: this.state.password_confirmation
         };
-    
-        // console.log(JSON.stringify(data));
-    
-        PostData('/auth',"POST", data)
+        
+        var request = {"email": data.email, "password": data.password, "password_confirmation": data.password_confirmation};
+        
+        console.log(JSON.stringify(request));
+
+        PostData('/users',"POST", data)
         .then((result) => {
           let responseJSON = result;
           console.log("lo que me llego al registrarme;")
           console.log(JSON.stringify(responseJSON))
           
-          if (responseJSON.data) {
-            sessionStorage.setItem('userData', JSON.stringify(responseJSON));
-            this.setState({redirect: true})
-          }
+            localStorage.setItem("data", result.data);
+            sessionStorage.setItem("data", result.data);
           if (responseJSON.errors) {
             alert(responseJSON.errors.full_messages)
-            // sessionStorage.setItem('userData', JSON.stringify(responseJSON));
-            // this.setState({redirect: true})
+
           }
+          this.setState({redirect: "/signin"})
         });
     
         // fetch('/ 
@@ -94,7 +95,10 @@ class SignUp extends React.Component {
 
   render () {
     const { classes } = this.props;
-
+    if (this.state.redirect) {
+      //redirecciona si te logueas
+      return <Redirect to={this.state.redirect} />
+    }
     return (
         <Container component="main" maxWidth="xs">
           <CssBaseline />
