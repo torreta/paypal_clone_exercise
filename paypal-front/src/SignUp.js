@@ -59,12 +59,22 @@ class SignUp extends React.Component {
     };
 
     validateForm() {
-        return this.state.email.length > 0 && this.state.password.length > 0;
+
+      let verificador = this.state.email.length > 0 && this.state.password.length > 0 && this.state.password_confirmation.length > 0;
+      if(verificador){
+        return true;
+      }else{
+        alert("revisa los datos")
+        return false;
+      }
     }
 
     onSubmit = e => {
         e.preventDefault();
-    
+        if (!this.validateForm()){
+          return;
+        } 
+          
         const data = {
           email: this.state.email,
           password: this.state.password_confirmation,
