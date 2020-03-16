@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
+  
+  # loguear y token
   post 'user_token' => 'user_token#create'
+  
+  # usuarios
   resources :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # password reset
+  post 'passwords/forgot', to: 'passwords#forgot'
+  # post 'password/reset', to: 'password#reset'
+  # post 'password/change', to: 'password#change'
 end
