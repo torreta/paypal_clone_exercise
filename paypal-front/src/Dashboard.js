@@ -16,6 +16,8 @@ import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+
 import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
@@ -125,6 +127,12 @@ export default function Dashboard() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const Logout = () => {
+    localStorage.removeItem("jwt")
+    console.log("bolada session!")
+  };
+
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
@@ -145,6 +153,15 @@ export default function Dashboard() {
             Paypal Pirata XD
           </Typography>
           <Clock/>
+          {/* {!!localStorage.jwt ? ( */}
+          <IconButton onClick={Logout}>
+          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+          Cerrar Session
+          </Typography>
+          <ExitToAppIcon />
+          </IconButton>
+          {/* ) : null} */}
+          
         </Toolbar>
       </AppBar>
       <Drawer
