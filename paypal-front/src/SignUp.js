@@ -98,7 +98,11 @@ class SignUp extends React.Component {
 
           }
           this.setState({redirect: "/signin"})
-        });
+        })
+        /*unhappy path=*/ 
+        .catch(
+          alert("fallo el login, revisa los datos")
+        );
     
         // fetch('/ 
       };
@@ -131,7 +135,6 @@ class SignUp extends React.Component {
                     name="email"
                     autoComplete="email"
                     onChange={this.handleChange}
-                    
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -189,5 +192,5 @@ SignUp.propTypes = {
     classes: PropTypes.object.isRequired
   };
   
-  export default withStyles(styles)(SignUp);
+export default withStyles(styles)(SignUp);
   

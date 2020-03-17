@@ -56,7 +56,7 @@ class SignIn extends React.Component {
   };
 
   validateForm() {
-    let verificador = this.state.email.length > 0 && this.state.password.length > 0 && this.state.password_confirmation.length > 0;
+    let verificador = this.state.email.length > 0 && this.state.password.length > 0;
     if(verificador){
       return true;
     }else{
@@ -89,9 +89,12 @@ class SignIn extends React.Component {
       if (responseJSON.jwt) {
         localStorage.setItem("jwt", result.jwt);
         sessionStorage.setItem("jwt", result.jwt);
-        this.setState({redirect: "/signup"})
+        this.setState({redirect: "/dashboard"})
       }
-    });
+    })
+    .catch(
+      alert("fallo el login, revisa los datos")
+    );
 
     // fetch('/ 
   };
