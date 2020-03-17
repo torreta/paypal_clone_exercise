@@ -86,7 +86,7 @@ class SignIn extends React.Component {
       console.log("lo que llego del server");
       console.log(result);
 
-      if (responseJSON.jwt) {
+      if (responseJSON && responseJSON.jwt) {
         localStorage.setItem("jwt", result.jwt);
         sessionStorage.setItem("jwt", result.jwt);
         this.setState({redirect: "/dashboard"})

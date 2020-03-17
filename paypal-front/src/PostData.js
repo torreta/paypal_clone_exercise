@@ -19,13 +19,15 @@ export default function PostData(type,method,userData) {
               },
             body: JSON.stringify(userData)
         })
-        .then((response) => response.json())
+        .then(function(response){
+            if (response.ok) {
+                return response.json()
+            }
+        })
         .then((responseJson) => {
             resolve(responseJson);
         })
-        .catch((error) => {
-            reject(error);
-        })
-    });
+        .catch(error => {reject(error)});
+    })
 }
 
