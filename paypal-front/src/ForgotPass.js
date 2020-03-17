@@ -72,11 +72,12 @@ class ForgotPass extends React.Component {
     PostData('/passwords/forgot','POST', data)
     .then((result) => {
       let responseJSON = result;
-      if (responseJSON.token) {
-        sessionStorage.setItem('userData', JSON.stringify(responseJSON));
-        this.setState({redirect: true})
+      if (responseJSON.message) {
+        alert(responseJSON.message)
+        this.setState({redirect: "/signin"})
       }
-    });
+    })
+    .catch(error => {console.log(error); alert("revisa los datos suministrados")});
 
     // fetch('/ 
   };
