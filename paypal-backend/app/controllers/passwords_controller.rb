@@ -6,24 +6,14 @@ class PasswordsController < ApplicationController
         end
     
         @user = User.find_by(email: params[:email]) # if present find user by email
-        
-        puts("USAURIO que encontre")
-        puts( @user.id)
-        puts( @user.email)
-        puts( @user.password_digest)
 
         if @user.present?
-            @user.update(password: "123456") 
-            # @user.password_confirmation = "123456"
-            # @user.save!
-
-            puts("USAURIO que modifique")
-            puts( @user.id)
-            puts( @user.email)
-            puts( @user.password_digest)
+          # evito correo solo mando un alert
+          @user.password = 'recordado'
+          @user.save
 
           # SEND EMAIL HERE (??)
-          render json: {status: "ok", message:"su password ha cambiado con exito, su nueva clave temporalmente es '123456'"}
+          render json: {status: "ok", message:"su password ha cambiado con exito, su nueva clave temporalmente es 'recordado'"}
         else
           render json: {error: ["Email address not found. Please check and try again."]}, status: :not_found
         end
