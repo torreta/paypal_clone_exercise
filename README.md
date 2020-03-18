@@ -27,3 +27,14 @@ buscando librerias a usar en front // 6:00pm
 -- breack 6:40pm
 
 -- break 7:15 // dogo walk and dinner prep
+
+-- break 8:58pm // setting stuff to eat
+
+sabias que knock, si le cambias el password al usuario, a pesar de que
+generes un hash equivalente en bcrypt, knock no lo toma nunca como valido
+y no sabe que te estas logueando correctamente?
+
+pasa lo mismo si haces update al password  via el controlador....
+
+
+-- 
