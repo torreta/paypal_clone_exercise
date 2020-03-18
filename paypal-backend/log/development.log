@@ -1765,3 +1765,278 @@ Migrating to CreateUsers (20200315222750)
   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
   [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test5@gmail.com"], ["password_digest", "$2a$12$.MWPPv13L2GqJid4JXfOle5xe0CzDb0xfDfCC5Ffmr13mix7xgz6e"], ["created_at", "2020-03-17 03:21:41.658337"], ["updated_at", "2020-03-17 03:21:41.658337"]]
   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/passwords/forgot" for ::1 at 2020-03-16 23:22:13 -0400
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PasswordsController#forgot as */*
+  Parameters: {"email"=>"test2@email.com", "password"=>{"email"=>"test2@email.com"}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:8:in `forgot'
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 4.2ms | Allocations: 3749)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/passwords_controller.rb:10:in `forgot'
+Started POST "/passwords/forgot" for ::1 at 2020-03-16 23:23:00 -0400
+Processing by PasswordsController#forgot as */*
+  Parameters: {"email"=>"test2@email.com", "password"=>{"email"=>"test2@email.com"}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:8:in `forgot'
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 2.3ms | Allocations: 2389)
+
+
+  
+NoMethodError (undefined method `email' for nil:NilClass):
+  
+app/controllers/passwords_controller.rb:10:in `forgot'
+Started POST "/passwords/forgot" for ::1 at 2020-03-16 23:23:45 -0400
+Processing by PasswordsController#forgot as */*
+  Parameters: {"email"=>"test2@gmail.com", "password"=>{"email"=>"test2@gmail.com"}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:8:in `forgot'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/passwords_controller.rb:17:in `forgot'
+  [1m[36mUser Destroy (0.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/passwords_controller.rb:17:in `forgot'
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/passwords_controller.rb:17:in `forgot'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/passwords_controller.rb:23:in `forgot'
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test2@gmail.com"], ["password_digest", "$2a$12$QBWuIMmZA/8d5s1n8v7Kd.hfd3b.8rGcjMFM6CsGDB/XbjuwbV1j."], ["created_at", "2020-03-17 03:23:46.244506"], ["updated_at", "2020-03-17 03:23:46.244506"]]
+  ↳ app/controllers/passwords_controller.rb:23:in `forgot'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/passwords_controller.rb:23:in `forgot'
+Completed 200 OK in 330ms (Views: 0.2ms | ActiveRecord: 8.7ms | Allocations: 7838)
+
+
+Started POST "/user_token/" for ::1 at 2020-03-16 23:24:04 -0400
+Processing by UserTokenController#create as */*
+  Parameters: {"auth"=>{"email"=>"test2@gmail.com", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"email"=>"test2@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+Completed 201 Created in 397ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 3856)
+
+
+Started POST "/passwords/forgot" for ::1 at 2020-03-16 23:25:32 -0400
+Processing by PasswordsController#forgot as */*
+  Parameters: {"email"=>"test2@gmail.com", "password"=>{"email"=>"test2@gmail.com"}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:8:in `forgot'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/passwords_controller.rb:19:in `forgot'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["password_digest", "$2a$12$GJMckZ7EyP4iq0dmPDhOB.GRJpGH7JAHJKLKHYtnl2g3K7a4PHbEK"], ["updated_at", "2020-03-17 03:25:33.168968"], ["id", 6]]
+  ↳ app/controllers/passwords_controller.rb:19:in `forgot'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/passwords_controller.rb:19:in `forgot'
+Completed 200 OK in 304ms (Views: 0.2ms | ActiveRecord: 6.1ms | Allocations: 6991)
+
+
+Started POST "/user_token/" for ::1 at 2020-03-16 23:25:42 -0400
+Processing by UserTokenController#create as */*
+  Parameters: {"auth"=>{"email"=>"test2@gmail.com", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"email"=>"test2@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+Completed 201 Created in 288ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 2026)
+
+
+Started POST "/passwords/forgot" for ::1 at 2020-03-16 23:26:57 -0400
+Processing by PasswordsController#forgot as */*
+  Parameters: {"email"=>"test2@gmail.com", "password"=>{"email"=>"test2@gmail.com"}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:8:in `forgot'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/passwords_controller.rb:13:in `forgot'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["password_digest", "$2a$12$ilV8MWaJMWDlw/N8.sT3n.VqEq0D1M/RgAc6Wmlpo8MR2DSJyPhPy"], ["updated_at", "2020-03-17 03:26:57.758664"], ["id", 6]]
+  ↳ app/controllers/passwords_controller.rb:13:in `forgot'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/passwords_controller.rb:13:in `forgot'
+Completed 200 OK in 315ms (Views: 0.3ms | ActiveRecord: 6.0ms | Allocations: 6913)
+
+
+Started POST "/user_token/" for ::1 at 2020-03-16 23:27:04 -0400
+Processing by UserTokenController#create as */*
+  Parameters: {"auth"=>{"email"=>"test2@gmail.com", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"email"=>"test2@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+Completed 201 Created in 290ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 2026)
+
+
+Started POST "/passwords/forgot" for ::1 at 2020-03-16 23:29:31 -0400
+Processing by PasswordsController#forgot as */*
+  Parameters: {"email"=>"test2@gmail.com", "password"=>"[FILTERED]"}
+HTTP Origin header (http://localhost:3000) didn't match request.base_url (http://localhost:3001)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:8:in `forgot'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/passwords_controller.rb:13:in `forgot'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["password_digest", "$2a$12$5qMlhBAX4Dqa7Q8Si.l03OCLd3M9s1gqcnUTzXyke5wCNqeIviP2e"], ["updated_at", "2020-03-17 03:29:31.397697"], ["id", 6]]
+  ↳ app/controllers/passwords_controller.rb:13:in `forgot'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/passwords_controller.rb:13:in `forgot'
+Completed 200 OK in 285ms (Views: 0.2ms | ActiveRecord: 2.0ms | Allocations: 2841)
+
+
+Started POST "/passwords/forgot" for ::1 at 2020-03-16 23:29:51 -0400
+Processing by PasswordsController#forgot as */*
+  Parameters: {"email"=>"test2@gmail.com", "password"=>"[FILTERED]"}
+HTTP Origin header (http://localhost:3000) didn't match request.base_url (http://localhost:3001)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:8:in `forgot'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/passwords_controller.rb:13:in `forgot'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["password_digest", "$2a$12$SQhh9gwccKKyA1yIBFS0s.oFCUWxsb2o.jnWXksKfqDGAEuFacrKK"], ["updated_at", "2020-03-17 03:29:52.002282"], ["id", 6]]
+  ↳ app/controllers/passwords_controller.rb:13:in `forgot'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/passwords_controller.rb:13:in `forgot'
+Completed 200 OK in 276ms (Views: 0.3ms | ActiveRecord: 1.7ms | Allocations: 2831)
+
+
+Started POST "/passwords/forgot" for ::1 at 2020-03-16 23:33:31 -0400
+Processing by PasswordsController#forgot as */*
+  Parameters: {"email"=>"test2@gmail.com", "password"=>"[FILTERED]"}
+HTTP Origin header (http://localhost:3000) didn't match request.base_url (http://localhost:3001)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:8:in `forgot'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/passwords_controller.rb:13:in `forgot'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["password_digest", "$2a$12$TKcVjLYAqwMWOuyvkg.N1.HtrxVT4UZStOOUhfr/k3OYCphXBujgC"], ["updated_at", "2020-03-17 03:33:31.409029"], ["id", 6]]
+  ↳ app/controllers/passwords_controller.rb:13:in `forgot'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/passwords_controller.rb:13:in `forgot'
+Completed 200 OK in 316ms (Views: 0.3ms | ActiveRecord: 1.8ms | Allocations: 2833)
+
+
+Started POST "/passwords/forgot" for ::1 at 2020-03-16 23:33:44 -0400
+Processing by PasswordsController#forgot as */*
+  Parameters: {"email"=>"test2@gmail.com", "password"=>"[FILTERED]"}
+HTTP Origin header (http://localhost:3000) didn't match request.base_url (http://localhost:3001)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:8:in `forgot'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/passwords_controller.rb:13:in `forgot'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["password_digest", "$2a$12$3siFUIwVMSZaBSpsv0a.nuk2tORNrd2pS7QrQeFp1s9C.gjIsAGui"], ["updated_at", "2020-03-17 03:33:44.477209"], ["id", 6]]
+  ↳ app/controllers/passwords_controller.rb:13:in `forgot'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/passwords_controller.rb:13:in `forgot'
+Completed 200 OK in 297ms (Views: 0.2ms | ActiveRecord: 1.6ms | Allocations: 2833)
+
+
+Started POST "/user_token" for ::1 at 2020-03-16 23:34:04 -0400
+Processing by UserTokenController#create as */*
+  Parameters: {"auth"=>{"email"=>"test2@gmail.com", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"email"=>"test2@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+Completed 404 Not Found in 302ms (ActiveRecord: 0.3ms | Allocations: 1269)
+
+
+Started POST "/user_token" for ::1 at 2020-03-16 23:38:58 -0400
+Processing by UserTokenController#create as */*
+  Parameters: {"auth"=>{"email"=>"luis@gmail.com", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"email"=>"luis@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "luis@gmail.com"], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms | Allocations: 1179)
+
+
+Started POST "/user_token" for ::1 at 2020-03-16 23:40:35 -0400
+Processing by UserTokenController#create as */*
+  Parameters: {"auth"=>{"email"=>"luis@gmail.com", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"email"=>"luis@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "luis@gmail.com"], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms | Allocations: 1179)
+
+
+Started POST "/user_token" for ::1 at 2020-03-16 23:42:41 -0400
+Processing by UserTokenController#create as */*
+  Parameters: {"auth"=>{"email"=>"luis@gmail.com", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"email"=>"luis@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "luis@gmail.com"], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms | Allocations: 1179)
+
+
+Started POST "/user_token" for ::1 at 2020-03-16 23:42:54 -0400
+Processing by UserTokenController#create as */*
+  Parameters: {"auth"=>{"email"=>"luis@gmail.com", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"email"=>"luis@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "luis@gmail.com"], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms | Allocations: 1179)
+
+
+Started POST "/user_token" for ::1 at 2020-03-16 23:43:12 -0400
+Processing by UserTokenController#create as */*
+  Parameters: {"auth"=>{"email"=>"test@gmail.com", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"email"=>"test@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+Completed 201 Created in 278ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1401)
+
+
+Started POST "/user_token" for ::1 at 2020-03-16 23:46:51 -0400
+Processing by UserTokenController#create as */*
+  Parameters: {"auth"=>{"email"=>"luis@gmail.com", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"email"=>"luis@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "luis@gmail.com"], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.4ms | Allocations: 1179)
+
+
+Started POST "/user_token" for ::1 at 2020-03-16 23:47:47 -0400
+Processing by UserTokenController#create as */*
+  Parameters: {"auth"=>{"email"=>"luis@gmail.com", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"email"=>"luis@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "luis@gmail.com"], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms | Allocations: 1179)
+
+
+Started POST "/user_token" for ::1 at 2020-03-16 23:47:53 -0400
+Processing by UserTokenController#create as */*
+  Parameters: {"auth"=>{"email"=>"luis@gmail.com", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"email"=>"luis@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "luis@gmail.com"], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms | Allocations: 1179)
+
+
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (234.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "paypal-backend"[0m
+  [1m[35m (1128.0ms)[0m  [1m[35mCREATE DATABASE "paypal-backend" ENCODING = 'unicode'[0m
+  [1m[35m (26.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (8.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3168499989385108245)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20200315222750)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (12.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying, "password_digest" character varying, "amount" decimal DEFAULT 0.0, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200315222750"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-03-18 03:56:52.769600"], ["updated_at", "2020-03-18 03:56:52.769600"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3168499989385108245)[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3168499989385108245)[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddMoneyToUsers (20200318041049)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(3168499989385108245)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3168499989385108245)[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddMoneyToUsers (20200318041049)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.7ms)[0m  [1m[35mALTER TABLE "users" ADD "money" decimal(8,2) DEFAULT 0.0[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200318041049"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3168499989385108245)[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (2.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@gmail.com"], ["password_digest", "$2a$12$2P7/yY.Nr02POTOGxxSI2e5HiBc43L09NamHnkQa5VHiiDVCHMoDy"], ["created_at", "2020-03-18 04:13:26.172838"], ["updated_at", "2020-03-18 04:13:26.172838"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test2@gmail.com"], ["password_digest", "$2a$12$Oa6XOYPsp/VpCOeyXyM3Qecj8fiNMFkCSzb0kSTkbA1VtXRpVAqJK"], ["created_at", "2020-03-18 04:13:26.453629"], ["updated_at", "2020-03-18 04:13:26.453629"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test3@gmail.com"], ["password_digest", "$2a$12$H9cSDZn9/j873Wd1WxBCqOEW0B42a8baq1A9NzI1TJm8RJ8dwA9hu"], ["created_at", "2020-03-18 04:13:26.730741"], ["updated_at", "2020-03-18 04:13:26.730741"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test4@gmail.com"], ["password_digest", "$2a$12$vMDwYPW/Qp60QE/R.3Iai.3ZDfN1ETbBNQbsNdNN.YBb5Op9zYQ8q"], ["created_at", "2020-03-18 04:13:27.009287"], ["updated_at", "2020-03-18 04:13:27.009287"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test5@gmail.com"], ["password_digest", "$2a$12$L8uWOFCYZ7Kkx0iKI8gi7e1hEgZb0.TKLMjMg504E3DNbWkrhlbVa"], ["created_at", "2020-03-18 04:13:27.288623"], ["updated_at", "2020-03-18 04:13:27.288623"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
