@@ -16,6 +16,11 @@ rails g scaffold User email password_digest
 https://stackoverflow.com/questions/1019939/what-is-the-best-method-of-handling-currency-money
 rails g migration add_money_to_users money:decimal
 add_column :items, :price, :decimal, :precision => 8, :scale => 2
+
+rails g scaffold transaction amount:decimal sender:user:references receiver:user:references timestamp (ok)
+    t.references :sender, foreign_key: { to_table: 'users' }
+    t.references :receiver, foreign_key: { to_table: 'users' }
+
 :::::: front
 # la aplicacion react la cree con 
  npx create-react-app paypal-front
