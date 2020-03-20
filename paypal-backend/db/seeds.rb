@@ -37,3 +37,27 @@ user5.password = '123123123'
 user5.password_confirmation = '123123123'
 user5.save
 
+
+transaction1 = Transaction.new
+transaction1.sender_id = User.first().id
+transaction1.receiver_id = User.last().id
+transaction1.amount = 200
+transaction1.save
+
+transaction2 = Transaction.new
+transaction2.sender_id = User.first().id
+transaction2.receiver_id = User.last().id
+transaction2.amount = 150
+transaction2.save
+
+transaction3 = Transaction.new
+transaction3.sender_id = User.first().id
+transaction3.receiver_id = User.last().id
+transaction3.amount = 400
+transaction3.save
+
+transaction4 = Transaction.new
+transaction4.sender_id = User.first().id
+transaction4.receiver_id = User.last().id
+transaction4.amount = 90
+transaction4.save

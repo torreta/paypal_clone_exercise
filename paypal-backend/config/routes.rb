@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :transactions
   # loguear y token
   post 'user_token' => 'user_token#create'
   
